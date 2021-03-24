@@ -12,6 +12,7 @@
     {# {% load static %} #}
 
     <link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'front/custom.css' %}">
     <style>
     .ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
 </head>
@@ -48,9 +49,9 @@
                         <ul class="rd-menu rd-navbar-dropdown">
                           <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/orthoepy">Орфоэпия</a>
                           </li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/spelling">Пунктуация</a>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/punctuation">Пунктуация</a>
                           </li>
-                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/punctuation">Орфография</a>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/spelling">Орфография</a>
                           </li>
                           <!-- <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="test4.html">Словарный запас</a>
                           </li>-->
@@ -68,7 +69,8 @@
           </nav>
         </div>
     </header>
-  {% block content %} {% endblock %}
+    <script src="{% static 'front/script_custom.js'%}"></script>
+    {% block content %} {% endblock %}
         <footer class="section footer-corporate bg-gray-800 position-relative">
         <svg class="wave-dark" width="1920" height="713" viewBox="0 0 1920 713" fill="none">
           <path class="wave-path wave-path-1" d="M1920 463.314V713H0V414.325C0.0515862 414.316 0.103105 414.308 0.154556 414.299C59.8232 467.769 270.664 573.445 636.676 568.392C873.316 565.126 1040.4 505.514 1188.57 452.65C1326.86 403.309 1448.68 359.846 1595.21 373.565C1727.41 385.944 1837.94 423.471 1920 463.314Z" fill="white"></path>
@@ -83,7 +85,7 @@
       </footer>
     </div>
     <div class="snackbars" id="form-output-global"></div>
-    <script src="{% static 'front/core.min.js'%}/"></script>
+    <script src="{% static 'front/core.min.js'%}"></script>
     <script src="{% static 'front/script.js'%}"></script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+#exercise-type-holder{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.exercise-type{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem;
+	width: 35rem;
+	height: 5rem;
+	border: 1px solid black;
+}
+
+.practice-page-holder{
+	/*width: 100vw;*/
+	display: flex;
+	justify-content: center;
+}
+
+.practice-holder{
+	width: fit-content;
+	height: 100%;
+}
+
+
+.practice-item{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.word-input{
+	margin-left:1rem;
+}
+
+.red-outline{
+	border-color: red;
+}

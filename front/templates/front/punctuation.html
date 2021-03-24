@@ -1,20 +1,46 @@
 {% extends "./base.html" %}
 {% block content %}
-    <section class="section section-md section-md-1 text-center bg-wave-dark-wrap pb-0 text-gray-600">
+        <section class="section section-md section-md-1 text-center bg-wave-dark-wrap pb-0 text-gray-600">
         <div class="main">
             <div class="content-container">
-                <div>
-                    <p>Введите в поле ниже словосочетание<br /> «пр..емник имп..ратора»,<br />
-                    вставив пропущенную букву</p>
-                    <div class="aa">
-                        <label for="word">Ответ:</label>
-                        <input id="word" name="word" placeholder="пр..емник имп..ратора">
+                <div class='practice-page-holder'>
+                    <div class='practice-holder'>
+                    {%for word in data%}
+                        <div class="practice-item">
+                            <label for="word" style="display:flex; align-items:center">{{word.text}} {{word.total_count}} {{word.mistakes}}</label>
+                            <div>
+                                <input class='word-input' id="word-{{word.id}}" name="word" placeholder="ответ" autocomplete="off">
+                                <button class='word-check' id="check-{{word.id}}">Проверить</button>
                             </div>
+                        </div>
+                    {%endfor%}
+                    {% csrf_token %}
+                    <button id='submit' disabled="">Закончить</button>
+                    </div>
+                </div>
+                <!--<div>
+                    <p>Введите в поле ниже слово «торты»,<br />
+                    обозначив заглавной буквой ударную гласную</p>
+                    {%for word in data%}
+                    <div class="practice-item">
+                        <label for="word">{{word.name_stressed}} или {{word.name_stressed_wrong}}?</label>
+                        <input id="word" name="word" placeholder="ответ">
+                    </div>
+                    {%endfor%}
                     <button id="submit1" onclick="myF()">проверить</button>
                     <p class='result'><span id ='res'></span></p>
-                </div>
+                </div>-->
             </div>
         </div>
         </div>
       </section>
+    <script type="text/javascript">
+        // сохраняем слова из бэка
+        data = [{% for item in data %}
+            {'id':'{{item.id}}', 'answer':'{{item.comma_pos}}', 'correct': false}
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}];
+
+        exercise_processing('Punctuation', data);
+    </script>
 {% endblock content %}
