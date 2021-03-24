@@ -29,9 +29,10 @@
 	</form>
 </article>
 	<script type="text/javascript">
+		// показывает блок настроек и скрывает блок упражнений
 		function show_form(exercise_type){
 			document.querySelectorAll(".exercise-form")[0].classList.remove('hide')
-    		document.querySelectorAll(".exercise-form")[0].action = "/exercises/" + exercise_type
+    		document.querySelectorAll(".exercise-form")[0].action = "/exercises/" + exercise_type //прописывает ссылку на нужно упражнение
     		document.querySelectorAll("#exercise-type-holder")[0].style.display = 'none'
     		document.querySelectorAll("#form-heading")[0].innerHTML = types[exercise_type]
 		}
@@ -42,11 +43,11 @@
 			'orthoepy': 'Орфоэпия'
 		}
 
-		var type = "{{type}}"
-		console.log(type)
+		// если мы переходим на эту страницу из меню хэдэра, надо чтобы сразу отобразились настройки
+		var type = "{{type}}" //тут передается (из href'ов в хэдэре) название упражнения на англ. или None если мы просто открыли тесты
 		if (type != 'None')
-			if (type.includes('_')){
-				console.log(type.slice(1, type.length))
+			if (type.includes('_')){ //если нам просто надо открыть настройки то в type будет punctuation/прочее, если надо открыть настройки и показать сообщение что ниче не нашлось - _punctuation
+			//type со знаком _ передается только из views
 				show_form(type.slice(1, type.length))
 				node = document.createElement("p")
 				node.appendChild(document.createTextNode('Не нашлось подходящих заданий'))
@@ -54,21 +55,15 @@
 			}
 			else
 				show_form(type)
-		// console.log('{{type}}')
-		// {% if type != None %}
-		// 	show_form('{{type}}')
-		// 	{% if '_' in type %}
-		// 		node = document.createElement("p")
-		// 		node.appendChild(document.createTextNode('Не нашлось подходящих заданий'))
-		// 		document.querySelectorAll(".exercise-form")[0].appendChild(node);
-		// 	{%endif%}
-		// {%endif%}
 		
+		// закрытие формы настроек (прячем настройки)
 		document.querySelectorAll("#close-form")[0].addEventListener("click", function() {
     		document.querySelectorAll(".exercise-form")[0].classList.add('hide')
-        		document.querySelectorAll("#exercise-type-holder")[0].style.display = 'flex'
+        	document.querySelectorAll("#exercise-type-holder")[0].style.display = 'flex'
+        	document.querySelectorAll("#form-heading")[0].innerHTML = ''
     	});
 
+		// при нажатии на тип тренировки открываем окно настроек
 		var exercise_types = document.querySelectorAll(".exercise-type");
 		exercise_types.forEach(function(elem) {
         	elem.addEventListener("click", function() {
