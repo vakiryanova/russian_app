@@ -1,0 +1,22 @@
+{% extends "./base.html" %}
+{% block content %}
+    <section class="section section-md section-md-1 text-center bg-wave-dark-wrap pb-0 text-gray-600">
+        <div class="main">
+            <div class="content-container">
+                <div>
+                    <p>Введите в поле ниже слово «торты»,<br />
+                    обозначив заглавной буквой ударную гласную</p>
+                    {%for word in data%}
+                    <div class="aa">
+                        <label for="word">Ответ:</label>
+                        <input id="word" name="word" placeholder="{{word.name_stressed}} или {{word.name_stressed_wrong}}?">
+                            </div>
+                    {%endfor%}
+                    <button id="submit1" onclick="myF()">проверить</button>
+                    <p class='result'><span id ='res'></span></p>
+                </div>
+            </div>
+        </div>
+        </div>
+      </section>
+{% endblock content %}

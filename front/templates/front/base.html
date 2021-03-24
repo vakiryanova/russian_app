@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="ru">
+  <head>
+    <title>MyRussian</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900%7CMerriweather:300,400,700,700i,900">
+    {# <link rel="stylesheet" href="css/style.css"> #}
+    {# {% load static %} #}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'front/style.css' %}">
+    <style>
+    .ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+</head>
+<body>
+      <!--<div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>-->
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container">
+          <div class="cssload-speeding-wheel"></div>
+        </div>
+      </div>
+    </div>
+    <div class="page">
+    <header class="section page-header">
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-xl-device-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <!--RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!--RD Navbar Toggle-->
+                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                  <!--RD Navbar Brand-->
+                  <div class="rd-navbar-brand">
+                    <!--Brand--><a class="brand" href="index.html"><img class="brand-logo-dark" src="images/pct.png" alt="" width="45" height="45"/><img class="brand-logo-light" src="images/pct.png" alt="" width="45" height="45"/></a>
+                  </div>
+                </div>
+                <div class="rd-navbar-main-element">
+                  <div class="rd-navbar-nav-wrap">
+                    <ul class="rd-navbar-nav">
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="/">О проекте</a>
+                      </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="/exercises">Тесты</a>
+                        <ul class="rd-menu rd-navbar-dropdown">
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/orthoepy">Орфоэпия</a>
+                          </li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/spelling">Пунктуация</a>
+                          </li>
+                          <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/exercises/punctuation">Орфография</a>
+                          </li>
+                          <!-- <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="test4.html">Словарный запас</a>
+                          </li>-->
+                        </ul>
+                      </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#faq">FAQ</a>
+                      </li>
+                      <li class="rd-nav-item"><a class="rd-nav-link" href="#contacts">Контакты</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+    </header>
+  {% block content %} {% endblock %}
+        <footer class="section footer-corporate bg-gray-800 position-relative">
+        <svg class="wave-dark" width="1920" height="713" viewBox="0 0 1920 713" fill="none">
+          <path class="wave-path wave-path-1" d="M1920 463.314V713H0V414.325C0.0515862 414.316 0.103105 414.308 0.154556 414.299C59.8232 467.769 270.664 573.445 636.676 568.392C873.316 565.126 1040.4 505.514 1188.57 452.65C1326.86 403.309 1448.68 359.846 1595.21 373.565C1727.41 385.944 1837.94 423.471 1920 463.314Z" fill="white"></path>
+          <path class="wave-path wave-path-2" d="M1920 463.988V713H0V234.66C102.275 199.182 221.353 170.486 354.422 158.026C584.381 136.494 775.567 204.707 992.611 282.146C1225.15 365.113 1373 457.092 1858.75 463.796C1879.49 464.082 1899.9 464.142 1920 463.988Z" fill="white"></path>
+          <path class="wave-path wave-path-3" d="M1920 85.9538V713H0V310.063C15.2357 310.099 30.6508 310.012 46.2454 309.796C417.632 304.67 679.852 211.113 912.389 128.146C1129.43 50.7068 1320.62 -17.5061 1550.58 4.02629C1690.21 17.1004 1814.43 48.0502 1920 85.9538Z" fill="white"></path>
+        </svg>
+        <div class="container">
+          <div class="footer-corporate-aside text-center text-xl-left wow fadeInUp">
+            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>.&nbsp;</span><span>Copyright R. Bevz</span></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="{% static 'front/core.min.js'%}/"></script>
+    <script src="{% static 'front/script.js'%}"></script>
+</body>
+</html>

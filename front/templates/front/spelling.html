@@ -1,0 +1,22 @@
+{% extends "./base.html" %}
+{% block content %}
+      <!-- Welcome to Lintense-->
+    <section class="section section-md section-md-1 text-center bg-wave-dark-wrap pb-0 text-gray-600">
+        <div class="main">
+            <div class="content-container">
+                <div>
+                    <p>Введите в поле ниже количество запятых в предложении:<br />
+                    "Вчера была хорошая погода и казалось<br />что птицы не умолкают ни на секунду"</p>
+                    <div class="aa">
+                        <label for="word">Ответ:</label>
+                        <input id="word" name="word" placeholder="сколько запятых?">
+                            </div>
+                    <button id="submit1" onclick="myF()">проверить</button>
+                    <p class='result'><span id ='res'></span></p>
+                </div>
+            </div>
+        </div>
+        </div>
+      </section>
+
+{% endblock content %}
