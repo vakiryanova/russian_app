@@ -1,10 +1,79 @@
 {% extends "./base.html" %}
 {% block content %}
-<section>
+<article class='page-content'>
 	<div id="exercise-type-holder">
-		<div class='exercise-type' id='spelling'>Орфография</div>
-		<div class='exercise-type' id='orthoepy'>Орфоэпия</div>
-		<div class='exercise-type' id='syntax'>Пунктуация</div>
+		<h2>Выберите тип упражнения</h2>
+		<div class='exercise-type cursor' id='spelling'>Орфография</div>
+		<div class='exercise-type cursor' id='orthoepy'>Орфоэпия</div>
+		<div class='exercise-type cursor' id='punctuation'>Пунктуация</div>
 	</div>
-</section>
+	<h2 id='form-heading'></h2>
+	<form action="/exercises/spelling" method="GET" class='exercise-form hide'>
+		<div id='close-form' class="cursor">x</div>
+		<div style="display: flex; 
+		flex-direction: column; 
+		justify-content: space-around;
+		width: 100%;">
+			<div style="display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 0.5rem;">
+				<div style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+					<span>Сложность: </span><div><input type="number" name="level" autocomplete="off" value="50" style='width:3rem'>%<span style="color: white">aaa</span></div>
+				</div>
+			</div>
+			<div style="display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 0.5rem;">
+				<div style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+					<span>Количество: </span><div><input type="number" name="amount" autocomplete="off" value="5" style='width:3rem'>слов</div>
+				</div>
+			</div>
+		</div>
+		<input type="submit" name="" style="margin-top: 0.5rem; width: fit-content; align-self: center">
+	</form>
+</article>
+	<script type="text/javascript">
+		function show_form(exercise_type){
+			document.querySelectorAll(".exercise-form")[0].classList.remove('hide')
+    		document.querySelectorAll(".exercise-form")[0].action = "/exercises/" + exercise_type
+    		document.querySelectorAll("#exercise-type-holder")[0].style.display = 'none'
+    		document.querySelectorAll("#form-heading")[0].innerHTML = types[exercise_type]
+		}
+
+		types = {
+			'punctuation': 'Пунктуация',
+			'spelling': 'Орфография',
+			'orthoepy': 'Орфоэпия'
+		}
+
+		var type = "{{type}}"
+		console.log(type)
+		if (type != 'None')
+			if (type.includes('_')){
+				console.log(type.slice(1, type.length))
+				show_form(type.slice(1, type.length))
+				node = document.createElement("p")
+				node.appendChild(document.createTextNode('Не нашлось подходящих заданий'))
+				document.querySelectorAll(".exercise-form")[0].appendChild(node);
+			}
+			else
+				show_form(type)
+		// console.log('{{type}}')
+		// {% if type != None %}
+		// 	show_form('{{type}}')
+		// 	{% if '_' in type %}
+		// 		node = document.createElement("p")
+		// 		node.appendChild(document.createTextNode('Не нашлось подходящих заданий'))
+		// 		document.querySelectorAll(".exercise-form")[0].appendChild(node);
+		// 	{%endif%}
+		// {%endif%}
+		
+		document.querySelectorAll("#close-form")[0].addEventListener("click", function() {
+    		document.querySelectorAll(".exercise-form")[0].classList.add('hide')
+        		document.querySelectorAll("#exercise-type-holder")[0].style.display = 'flex'
+    	});
+
+		var exercise_types = document.querySelectorAll(".exercise-type");
+		exercise_types.forEach(function(elem) {
+        	elem.addEventListener("click", function() {
+        		show_form(elem.id)
+        	})
+        });
+	</script>
 {% endblock content %}
