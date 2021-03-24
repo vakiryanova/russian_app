@@ -8,7 +8,7 @@
                     <div class='practice-holder'>
                     {%for word in data%}
                         <div class="practice-item">
-                            <label for="word" style="display:flex; align-items:center">{{word.name_with_blanks}} {{word.total_count}} {{word.mistakes}}</label>
+                            <label for="word" style="display:flex; align-items:center">{{word.name_with_blanks}} ({{word.percent}}%)</label>
                             <div>
                                 <input class='word-input' id="word-{{word.id}}" name="word" placeholder="ответ" autocomplete="off">
                                 <button class='word-check' id="check-{{word.id}}">Проверить</button>

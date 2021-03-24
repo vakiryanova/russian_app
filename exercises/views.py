@@ -61,6 +61,8 @@ def orthoepy_page(request):
 		print(words)
 
 	words_serialized = OrthoepySerializer(words, many=True)
+	for word in words_serialized.data:
+		word['percent'] = int(word['mistakes']/word['total_count']*100)
 	return render(request, 'front/orthoepy.html', {'data': words_serialized.data})
 
 def spelling_page(request):
@@ -84,6 +86,8 @@ def spelling_page(request):
 		words = Spelling.objects.all()
 		print(words)
 	words_serialized = SpellingSerializer(words, many=True)
+	for word in words_serialized.data:
+		word['percent'] = int(word['mistakes']/word['total_count']*100)
 	return render(request, 'front/spelling.html', {'data': words_serialized.data})
 
 def punctuation_page(request):
@@ -109,6 +113,8 @@ def punctuation_page(request):
 		print(words)
 
 	words_serialized = PunctuationSerializer(words, many=True)
+	for word in words_serialized.data:
+		word['percent'] = int(word['mistakes']/word['total_count']*100)
 	return render(request, 'front/punctuation.html', {'data': words_serialized.data})
 
 @csrf_exempt
